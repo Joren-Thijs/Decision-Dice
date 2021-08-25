@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Decision Dice</string>
+    <string name="welcome_message">Welcome to Decision Dice</string>
+    <string name="nav_button_one">To page 2</string>
+    <string name="category_food">food</string>
+    <string name="category_tv">tv</string>
+    <string name="category_game">game</string>
+    <string name="category_date">date</string>
+    <string name="category_boardgame">boardgame</string>
+    <string name="category_sex">sex</string>
+    <string name="category_food_button">Food</string>
+    <string name="category_tv_button">TV</string>
+    <string name="category_game_button">Game</string>
+    <string name="category_date_button">Date</string>
+    <string name="category_boardgame_button">Board Game</string>
+    <string name="category_sex_button">Sex</string>
+
+    <string name="choice_title">What to choose from?</string>
+    <string name="choice_subtitle">Or a previous one?</string>
+
+    <string name="choice_add_new_button">Make a new list</string>
+
+</resources>
