@@ -12,7 +12,10 @@ import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shadowcorp.firstapp.DataAccess.AppDatabase;
+import com.shadowcorp.firstapp.DataAccess.DiceSideDao;
 import com.shadowcorp.firstapp.R;
+import com.shadowcorp.firstapp.models.Dice;
 import com.shadowcorp.firstapp.models.DiceSide;
 
 import java.util.ArrayList;
@@ -20,8 +23,10 @@ import java.util.ArrayList;
 public class EditDiceSideRecViewAdapter extends RecyclerView.Adapter<EditDiceSideRecViewAdapter.ViewHolder> {
 
     ArrayList<DiceSide> diceSides = new ArrayList<>();
+    private boolean isEditing;
 
-    public EditDiceSideRecViewAdapter() {
+    public EditDiceSideRecViewAdapter(boolean isEditing) {
+        this.isEditing = isEditing;
     }
 
     @NonNull
@@ -52,6 +57,12 @@ public class EditDiceSideRecViewAdapter extends RecyclerView.Adapter<EditDiceSid
         holder.deleteDiceSide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DiceSide selectedDiceSide = diceSides.get(holder.getAdapterPosition());
+
+                if (isEditing) {
+                    DiceSideDao diceSideDao = AppDatabase.getInstance(view.getContext()).diceSideDao();
+                    diceSideDao.delete(selectedDiceSide);
+                }
                 diceSides.remove(holder.getAdapterPosition());
                 notifyDataSetChanged();
             }

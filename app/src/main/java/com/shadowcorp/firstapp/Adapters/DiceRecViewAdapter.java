@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shadowcorp.firstapp.DataAccess.AppDatabase;
 import com.shadowcorp.firstapp.DataAccess.DiceDao;
 import com.shadowcorp.firstapp.DiceActivity;
+import com.shadowcorp.firstapp.NewDiceActivity;
 import com.shadowcorp.firstapp.R;
 import com.shadowcorp.firstapp.models.Dice;
 
@@ -48,6 +49,17 @@ public class DiceRecViewAdapter extends RecyclerView.Adapter<DiceRecViewAdapter.
             public void onClick(View view) {
                 Dice selectedDice = dices.get(holder.getAdapterPosition());
                 Intent intent = new Intent(view.getContext(), DiceActivity.class);
+                intent.putExtra("diceId", selectedDice.id);
+                view.getContext().startActivity(intent);
+            }
+        });
+
+        holder.editDice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dice selectedDice = dices.get(holder.getAdapterPosition());
+
+                Intent intent = new Intent(view.getContext(), NewDiceActivity.class);
                 intent.putExtra("diceId", selectedDice.id);
                 view.getContext().startActivity(intent);
             }
@@ -84,12 +96,14 @@ public class DiceRecViewAdapter extends RecyclerView.Adapter<DiceRecViewAdapter.
 
         private LinearLayout parent;
         private TextView diceName;
+        private ImageButton editDice;
         private ImageButton deleteDice;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             parent = itemView.findViewById(R.id.dice_item_parent);
             diceName = itemView.findViewById(R.id.item_dice_name);
+            editDice = itemView.findViewById(R.id.editDice);
             deleteDice = itemView.findViewById(R.id.deleteDice);
         }
     }

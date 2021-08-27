@@ -4,7 +4,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +21,6 @@ import com.shadowcorp.firstapp.DataAccess.DiceSideDao;
 import com.shadowcorp.firstapp.models.Dice;
 import com.shadowcorp.firstapp.models.DiceSide;
 
-import java.time.Duration;
 import java.util.ArrayList;
 
 public class NewDiceActivity extends AppCompatActivity {
@@ -31,26 +29,49 @@ public class NewDiceActivity extends AppCompatActivity {
     private EditText editDiceName;
     private RecyclerView editDiceSideRecView;
     private EditDiceSideRecViewAdapter adapter;
-    ArrayList<DiceSide> diceSides;
+    ArrayList<DiceSide> diceSides = new ArrayList<>();;
     private Button addOptionButton;
     private Button saveDiceButton;
     private DiceDao diceDao;
     private DiceSideDao diceSideDao;
+
+    boolean isEditing;
+    Dice editingDice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_dice);
 
+        category = getIntent().getStringExtra("category");
+        int diceId = getIntent().getIntExtra("diceId", 0);
+
+        isEditing = diceId != 0;
+
+        setupActivity(isEditing);
+
+        if (isEditing) {
+            editingDice = diceDao.getById(diceId);
+            editDiceName.setText(editingDice.name);
+            category = editingDice.category;
+
+            diceSides = new ArrayList<>(diceSideDao.getDiceSidesForDice(diceId));
+        } else {
+            diceSides.add(new DiceSide(null, 0));
+            diceSides.add(new DiceSide(null, 0));
+            diceSides.add(new DiceSide(null, 0));
+        }
+        adapter.setDiceSides(diceSides);
+    }
+
+    private void setupActivity(boolean isEditing) {
         // Add back button behaviour
         ActionBar actionBar =  getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        category = getIntent().getStringExtra("category");
-
         editDiceName = findViewById(R.id.editDiceName);
 
-        setupDiceSideRecycleView();
+        setupDiceSideRecycleView(isEditing);
 
         addOptionButton = findViewById(R.id.addOptionButton);
         addOptionButton.setOnClickListener(new View.OnClickListener() {
@@ -72,15 +93,10 @@ public class NewDiceActivity extends AppCompatActivity {
         diceSideDao = AppDatabase.getInstance(getApplicationContext()).diceSideDao();
     }
 
-    private void setupDiceSideRecycleView() {
+    private void setupDiceSideRecycleView(boolean isEditing) {
         editDiceSideRecView = findViewById(R.id.editDiceSideRecView);
 
-        diceSides = new ArrayList<>();
-        diceSides.add(new DiceSide(null, 0));
-        diceSides.add(new DiceSide(null, 0));
-        diceSides.add(new DiceSide(null, 0));
-
-        adapter = new EditDiceSideRecViewAdapter();
+        adapter = new EditDiceSideRecViewAdapter(isEditing);
 
         adapter.setDiceSides(diceSides);
 
@@ -95,14 +111,22 @@ public class NewDiceActivity extends AppCompatActivity {
             return;
         }
 
-        // Create new Dice
-        Dice dice = new Dice(editDiceName.getText().toString(), category);
+        Dice dice;
 
-        // check if dice name already exists in db
-        Dice existingDice = diceDao.findByNameInCategory(dice.name, category);
-        if (existingDice != null) {
-            Toast.makeText(this, String.format("Dice with name %s already exists", dice.name), Toast.LENGTH_SHORT).show();
-            return;
+        if(isEditing) {
+            dice = editingDice;
+        } else {
+            // Create new Dice
+            dice = new Dice(editDiceName.getText().toString(), category);
+        }
+
+        if(!isEditing) {
+            // check if dice name already exists in db
+            Dice existingDice = diceDao.findByNameInCategory(dice.name, category);
+            if (existingDice != null) {
+                Toast.makeText(this, String.format("Dice with name %s already exists", dice.name), Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
 
         // Add dice to db

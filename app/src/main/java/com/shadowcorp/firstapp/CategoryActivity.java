@@ -14,6 +14,9 @@ public class CategoryActivity extends AppCompatActivity {
     private Button foodButton;
     private Button tvButton;
     private Button gameButton;
+    private Button dateButton;
+    private Button boardgameButton;
+    private Button sexButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,38 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 changeActivity(getResources().getString(R.string.category_tv));
+            }
+        }));
+
+        gameButton = findViewById(R.id.button_game);
+        gameButton.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeActivity(getResources().getString(R.string.category_game));
+            }
+        }));
+
+        dateButton = findViewById(R.id.button_date);
+        dateButton.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeActivity(getResources().getString(R.string.category_date));
+            }
+        }));
+
+        boardgameButton = findViewById(R.id.button_boardgame);
+        boardgameButton.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeActivity(getResources().getString(R.string.category_boardgame));
+            }
+        }));
+
+        sexButton = findViewById(R.id.button_sex);
+        sexButton.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeActivity(getResources().getString(R.string.category_sex));
             }
         }));
     }
