@@ -13,7 +13,7 @@ import androidx.room.PrimaryKey;
                                   onDelete = CASCADE))
 
 public class DiceSide {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
 
     @ColumnInfo(name = "name")

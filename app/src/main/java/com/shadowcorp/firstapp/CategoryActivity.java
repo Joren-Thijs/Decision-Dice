@@ -13,6 +13,7 @@ public class CategoryActivity extends AppCompatActivity {
 
     private Button foodButton;
     private Button tvButton;
+    private Button gameButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

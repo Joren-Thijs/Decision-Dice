@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Decision Dice</string>
     <string name="welcome_message">Welcome to Decision Dice</string>
-    <string name="nav_button_one">To page 2</string>
+    <string name="nav_button_one">Let\'s roll</string>
     <string name="category_food">food</string>
     <string name="category_tv">tv</string>
     <string name="category_game">game</string>
