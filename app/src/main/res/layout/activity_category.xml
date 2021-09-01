@@ -9,52 +9,16 @@
     tools:context=".CategoryActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="60dp"
         android:textSize="20dp"
-        android:text="Please choose a category" />
+        android:text="@string/category_title_text" />
 
-    <Button
-        android:id="@+id/button_food"
-        android:layout_width="130dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="@string/category_food_button" />
-
-    <Button
-        android:id="@+id/button_tv"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/category_tv_button" />
-
-    <Button
-        android:id="@+id/button_game"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/category_game_button" />
-
-    <Button
-        android:id="@+id/button_date"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/category_date_button" />
-
-    <Button
-        android:id="@+id/button_boardgame"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/category_boardgame_button" />
-
-    <Button
-        android:id="@+id/button_sex"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/category_sex_button" />
+        android:id="@+id/categoryRecView" />
 </LinearLayout>

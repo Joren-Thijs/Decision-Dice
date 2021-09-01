@@ -2,12 +2,19 @@ package com.shadowcorp.firstapp;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
+import androidx.cardview.widget.CardView;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +29,6 @@ import java.util.Random;
 
 public class DiceActivity extends AppCompatActivity {
 
-    private String category;
     private DiceDao diceDao;
     private DiceSideDao diceSideDao;
     private Dice dice;
@@ -31,10 +37,25 @@ public class DiceActivity extends AppCompatActivity {
     private TextView diceName;
     private Button rollButton;
 
+    private PopupWindow popupWindow;
+    private Context context;
+    private boolean click;
+    private LinearLayout popupLayout;
+    private TextView popupTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dice);
+        View activityView = getLayoutInflater().inflate(R.layout.activity_dice, null);
+        activityView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+            }
+        });
+        setContentView(activityView);
+
+        context = this;
 
         // Add back button behaviour
         ActionBar actionBar = getSupportActionBar();
@@ -58,6 +79,56 @@ public class DiceActivity extends AppCompatActivity {
                 rollDice();
             }
         });
+
+        createPopup();
+    }
+
+    private void createPopup() {
+        // Create popup
+        popupWindow = new PopupWindow(this);
+        // parent
+        popupLayout = new LinearLayout(this);
+        // card
+        CardView cardView = new CardView(this);
+        // inside of card
+        LinearLayout cardLayout = new LinearLayout(this);
+        // image
+        ImageView imageView = new ImageView(this);
+        //text
+        popupTextView = new TextView(this);
+
+        // linear params
+        LinearLayout.LayoutParams linearParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        // Card params
+        CardView.LayoutParams cardParams = new CardView.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+
+        // Set orientation
+        popupLayout.setOrientation(LinearLayout.VERTICAL);
+        cardLayout.setOrientation(LinearLayout.VERTICAL);
+
+        // set card properties
+        cardView.setCardElevation(5);
+        cardView.setRadius(10);
+
+        // add image to cardlayout
+        imageView.setLayoutParams(new FrameLayout.LayoutParams(650, 650));
+        imageView.setImageResource(R.mipmap.ic_launcher_foreground);
+        cardLayout.addView(imageView);
+
+        // add text to cardlayout
+        popupTextView.setText("You rolled option");
+        popupTextView.setTextSize(20);
+        popupTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        cardLayout.addView(popupTextView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        // add cardlayout to card
+        cardView.addView(cardLayout, cardParams);
+
+        // add card to linear layout
+        popupLayout.addView(cardView, linearParams);
+
+        // add linear layout to popup
+        popupWindow.setContentView(popupLayout);
     }
 
     private void rollDice() {
@@ -65,7 +136,15 @@ public class DiceActivity extends AppCompatActivity {
         int position = rand.nextInt(diceSides.size());
         String roll = diceSides.get(position).name;
 
-        Toast.makeText(this, String.format("You rolled %s", roll), Toast.LENGTH_LONG).show();
+        String popupText = getString(R.string.dice_rolled) + " " + roll;
+        popupTextView.setText(popupText);
+        popupWindow.showAtLocation(popupLayout, Gravity.CENTER, 10, 10);
+
+        new Handler().postDelayed(new Runnable(){
+            public void run() {
+                popupWindow.dismiss();
+            }
+        }, 3 * 1000);
     }
 
     // For back button navigation

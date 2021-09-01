@@ -6,34 +6,13 @@
     <string name="nav_button_one">Let\'s roll</string>
 
     <!--    Category activity-->
-    <array name="categories">
-        <item>food</item>
-        <item>tv</item>
-        <item>game</item>
-        <item>date</item>
-        <item>boardgame</item>
-        <item>sex</item>
-    </array>
-
-    <string name="category_food">food</string>
-    <string name="category_tv">tv</string>
-    <string name="category_game">game</string>
-    <string name="category_date">date</string>
-    <string name="category_boardgame">boardgame</string>
-    <string name="category_sex">sex</string>
-    <string name="category_food_button">Food</string>
-    <string name="category_tv_button">TV</string>
-    <string name="category_game_button">Game</string>
-    <string name="category_date_button">Date</string>
-    <string name="category_boardgame_button">Board Game</string>
-    <string name="category_sex_button">Sex</string>
-
-    <String name="category_food_image">https://www.creativefabrica.com/wp-content/uploads/2018/10/Food-seamless-pattern-by-sabavector-580x406.jpg</String>
-    <String name="category_tv_image">https://d1qxviojg2h5lt.cloudfront.net/images/01DT09FQC9HRGEEWVJ74XPYNVN/freepremiums570c.png</String>
-    <String name="category_game_image">https://www.pngitem.com/pimgs/m/439-4394113_transparent-gamers-png-computer-video-game-graphic-designer.png</String>
-    <String name="category_date_image">https://us.123rf.com/450wm/macrovector/macrovector1312/macrovector131200097/24164086-dating-paar-sc%C3%A8ne-liefde-bekentenis-vectorillustratie.jpg</String>
-    <String name="category_boardgame_image">https://www.seekpng.com/png/detail/94-946778_games-clipart-png-graphic-freeuse-board-game-png.png</String>
-    <String name="category_sex_image">http://clipart-library.com/data_images/562062.png</String>
+    <string name="category_title_text">Please choose a category</string>
+    <string name="food_category_name">Food</string>
+    <string name="tv_category_name">TV</string>
+    <string name="game_category_name">Game</string>
+    <string name="date_category_name">Date</string>
+    <string name="boardgame_category_name">Board Game</string>
+    <string name="sex_category_name">Sex</string>
 
     <!--    Choice activity-->
     <string name="choice_title">What to choose from?</string>
@@ -47,5 +26,6 @@
     <string name="new_option_hint">Option</string>
 
     <!--    Dice activity-->
+    <string name="dice_rolled">You rolled</string>
 
 </resources>
