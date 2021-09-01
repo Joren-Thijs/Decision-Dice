@@ -3,8 +3,11 @@ package com.shadowcorp.firstapp;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
@@ -18,6 +21,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shadowcorp.firstapp.Adapters.DiceRecViewAdapter;
+import com.shadowcorp.firstapp.Adapters.DiceSideAdapter;
 import com.shadowcorp.firstapp.DataAccess.AppDatabase;
 import com.shadowcorp.firstapp.DataAccess.DiceDao;
 import com.shadowcorp.firstapp.DataAccess.DiceSideDao;
@@ -35,17 +40,19 @@ public class DiceActivity extends AppCompatActivity {
     private ArrayList<DiceSide> diceSides = new ArrayList<>();
 
     private TextView diceName;
+    private RecyclerView diceSideRecView;
+    private DiceSideAdapter adapter;
+
     private Button rollButton;
 
     private PopupWindow popupWindow;
-    private Context context;
-    private boolean click;
     private LinearLayout popupLayout;
     private TextView popupTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Add onclick listener to activity layout
         View activityView = getLayoutInflater().inflate(R.layout.activity_dice, null);
         activityView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,8 +61,6 @@ public class DiceActivity extends AppCompatActivity {
             }
         });
         setContentView(activityView);
-
-        context = this;
 
         // Add back button behaviour
         ActionBar actionBar = getSupportActionBar();
@@ -71,6 +76,15 @@ public class DiceActivity extends AppCompatActivity {
 
         diceName = findViewById(R.id.diceName);
         diceName.setText(dice.name);
+
+        diceSideRecView = findViewById(R.id.dice_side_recview);
+
+        adapter = new DiceSideAdapter();
+
+        adapter.setDiceSides(diceSides);
+
+        diceSideRecView.setAdapter(adapter);
+        diceSideRecView.setLayoutManager(new LinearLayoutManager(this));
 
         rollButton = findViewById(R.id.rollButton);
         rollButton.setOnClickListener(new View.OnClickListener() {
@@ -105,10 +119,11 @@ public class DiceActivity extends AppCompatActivity {
         // Set orientation
         popupLayout.setOrientation(LinearLayout.VERTICAL);
         cardLayout.setOrientation(LinearLayout.VERTICAL);
+        cardLayout.setPadding(0, 0, 0, 50);
 
         // set card properties
         cardView.setCardElevation(5);
-        cardView.setRadius(10);
+        cardView.setRadius(50);
 
         // add image to cardlayout
         imageView.setLayoutParams(new FrameLayout.LayoutParams(650, 650));
@@ -128,6 +143,7 @@ public class DiceActivity extends AppCompatActivity {
         popupLayout.addView(cardView, linearParams);
 
         // add linear layout to popup
+        popupWindow.setBackgroundDrawable(new ColorDrawable( android.graphics.Color.TRANSPARENT));
         popupWindow.setContentView(popupLayout);
     }
 
