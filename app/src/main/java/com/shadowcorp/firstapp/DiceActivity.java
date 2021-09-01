@@ -37,7 +37,7 @@ public class DiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dice);
 
         // Add back button behaviour
-        ActionBar actionBar =  getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         int diceId = getIntent().getIntExtra("diceId", 0);
@@ -69,7 +69,7 @@ public class DiceActivity extends AppCompatActivity {
     }
 
     // For back button navigation
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         finish();
         return true;
     }

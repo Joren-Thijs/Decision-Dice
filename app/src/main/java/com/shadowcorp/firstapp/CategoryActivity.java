@@ -24,7 +24,7 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category);
 
         // Add back button behaviour
-        ActionBar actionBar =  getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         foodButton = findViewById(R.id.button_food);
@@ -83,7 +83,7 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     // For back button navigation
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         finish();
         return true;
     }

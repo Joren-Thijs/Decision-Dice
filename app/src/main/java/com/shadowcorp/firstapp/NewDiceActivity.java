@@ -67,7 +67,7 @@ public class NewDiceActivity extends AppCompatActivity {
 
     private void setupActivity(boolean isEditing) {
         // Add back button behaviour
-        ActionBar actionBar =  getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         editDiceName = findViewById(R.id.editDiceName);
@@ -114,14 +114,14 @@ public class NewDiceActivity extends AppCompatActivity {
 
         Dice dice;
 
-        if(isEditing) {
+        if (isEditing) {
             dice = editingDice;
         } else {
             // Create new Dice
             dice = new Dice(editDiceName.getText().toString(), category);
         }
 
-        if(!isEditing) {
+        if (!isEditing) {
             // check if dice name already exists in db
             Dice existingDice = diceDao.findByNameInCategory(dice.name, category);
             if (existingDice != null) {
@@ -131,7 +131,7 @@ public class NewDiceActivity extends AppCompatActivity {
         }
 
         // Add dice to db
-        int diceId = (int)diceDao.insert(dice);
+        int diceId = (int) diceDao.insert(dice);
 
         // Add dice id to dice sides
         for (DiceSide diceSide : diceSides) {
@@ -154,16 +154,16 @@ public class NewDiceActivity extends AppCompatActivity {
 
         // Check dice name is not null or empty
         String diceName = editDiceName.getText().toString();
-        if(Strings.isNullOrEmpty(diceName)) {
+        if (Strings.isNullOrEmpty(diceName)) {
             Toast.makeText(this, "Dice must have a name", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         boolean removedEmpty = false;
         // Check dice sides are not null or empty
-        for (Iterator<DiceSide> iterator = diceSides.iterator(); iterator.hasNext();) {
+        for (Iterator<DiceSide> iterator = diceSides.iterator(); iterator.hasNext(); ) {
             DiceSide diceSide = iterator.next();
-            if(Strings.isNullOrEmpty(diceSide.name)) {
+            if (Strings.isNullOrEmpty(diceSide.name)) {
                 // Remove the current element from the iterator and the list.
                 iterator.remove();
                 removedEmpty = true;
@@ -179,7 +179,7 @@ public class NewDiceActivity extends AppCompatActivity {
     }
 
     // For back button navigation
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         finish();
         return true;
     }

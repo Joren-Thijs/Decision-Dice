@@ -9,9 +9,9 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = @ForeignKey(entity = Dice.class,
-                                  parentColumns = "id",
-                                  childColumns = "diceId",
-                                  onDelete = CASCADE))
+        parentColumns = "id",
+        childColumns = "diceId",
+        onDelete = CASCADE))
 
 public class DiceSide {
     @PrimaryKey(autoGenerate = true)

@@ -148,7 +148,7 @@ public class DiceRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     public void showMenu(int position) {
-        for(int i=0; i<dices.size(); i++){
+        for (int i = 0; i < dices.size(); i++) {
             dices.get(i).setShowMenu(false);
         }
         dices.get(position).setShowMenu(true);
@@ -157,8 +157,8 @@ public class DiceRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
 
     public boolean isMenuShown() {
-        for(int i=0; i<dices.size(); i++){
-            if(dices.get(i).isShowMenu()){
+        for (int i = 0; i < dices.size(); i++) {
+            if (dices.get(i).isShowMenu()) {
                 return true;
             }
         }
@@ -166,13 +166,13 @@ public class DiceRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     public void closeMenu() {
-        for(int i=0; i<dices.size(); i++){
+        for (int i = 0; i < dices.size(); i++) {
             dices.get(i).setShowMenu(false);
         }
         notifyDataSetChanged();
     }
 
-    public class DiceViewHolder extends RecyclerView.ViewHolder  {
+    public class DiceViewHolder extends RecyclerView.ViewHolder {
 
         private LinearLayout parent;
         private TextView diceName;
@@ -184,7 +184,7 @@ public class DiceRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
-    public class MenuViewHolder extends RecyclerView.ViewHolder  {
+    public class MenuViewHolder extends RecyclerView.ViewHolder {
 
         private LinearLayout parent;
         private ImageButton editDice;

@@ -41,7 +41,7 @@ public class ChoiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choice);
 
         // Add back button behaviour
-        ActionBar actionBar =  getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         category = getIntent().getStringExtra("category");
