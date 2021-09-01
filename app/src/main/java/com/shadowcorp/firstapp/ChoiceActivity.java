@@ -38,7 +38,15 @@ public class ChoiceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choice);
+        // Add onclick listener to activity layout
+        View activityView = getLayoutInflater().inflate(R.layout.activity_choice, null);
+        activityView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adapter.closeMenu();
+            }
+        });
+        setContentView(activityView);
 
         // Add back button behaviour
         ActionBar actionBar = getSupportActionBar();
