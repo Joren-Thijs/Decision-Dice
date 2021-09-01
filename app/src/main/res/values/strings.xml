@@ -1,7 +1,19 @@
 <resources>
     <string name="app_name">Decision Dice</string>
+
+    <!--    Main Activity-->
     <string name="welcome_message">Welcome to Decision Dice</string>
     <string name="nav_button_one">Let\'s roll</string>
+
+    <!--    Category activity-->
+    <array name="categories">
+        <item>food</item>
+        <item>tv</item>
+        <item>game</item>
+        <item>date</item>
+        <item>boardgame</item>
+        <item>sex</item>
+    </array>
     <string name="category_food">food</string>
     <string name="category_tv">tv</string>
     <string name="category_game">game</string>
@@ -15,9 +27,17 @@
     <string name="category_boardgame_button">Board Game</string>
     <string name="category_sex_button">Sex</string>
 
+    <!--    Choice activity-->
     <string name="choice_title">What to choose from?</string>
     <string name="choice_subtitle">Or a previous one?</string>
-
     <string name="choice_add_new_button">Make a new list</string>
+
+    <!--    New Dice activity-->
+    <string name="new_name_hint">Name</string>
+    <string name="new_option_button">Add option</string>
+    <string name="new_save_button">Save</string>
+    <string name="new_option_hint">Option</string>
+
+    <!--    Dice activity-->
 
 </resources>

@@ -5,7 +5,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shadowcorp.firstapp.DataAccess.AppDatabase;
 import com.shadowcorp.firstapp.DataAccess.DiceSideDao;
 import com.shadowcorp.firstapp.R;
-import com.shadowcorp.firstapp.models.Dice;
 import com.shadowcorp.firstapp.models.DiceSide;
 
 import java.util.ArrayList;
@@ -32,7 +30,7 @@ public class EditDiceSideRecViewAdapter extends RecyclerView.Adapter<EditDiceSid
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.edit_dice_side_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_edit_dice_side, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }

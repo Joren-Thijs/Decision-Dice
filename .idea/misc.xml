@@ -15,6 +15,11 @@
         <entry key="..\:/repos/FirstApp/app/src/main/res/layout/content_scrolling.xml" value="0.2829059829059829" />
         <entry key="..\:/repos/FirstApp/app/src/main/res/layout/dice_item.xml" value="0.2824786324786325" />
         <entry key="..\:/repos/FirstApp/app/src/main/res/layout/edit_dice_side_item.xml" value="0.47136752136752136" />
+        <entry key="..\:/repos/FirstApp/app/src/main/res/layout/item_dice.xml" value="0.2833333333333333" />
+        <entry key="..\:/repos/FirstApp/app/src/main/res/layout/item_edit_dice_side.xml" value="0.47136752136752136" />
+        <entry key="..\:/repos/FirstApp/app/src/main/res/layout/item_edit_menu.xml" value="0.264" />
+        <entry key="..\:/repos/FirstApp/app/src/main/res/layout/item_recycler_view.xml" value="0.28376068376068375" />
+        <entry key="..\:/repos/FirstApp/app/src/main/res/layout/recycler_view_item_1.xml" value="0.28376068376068375" />
         <entry key="..\:/repos/FirstApp/app/src/main/res/menu/menu_choice.xml" value="0.2829059829059829" />
         <entry key="..\:/repos/FirstApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2965811965811966" />
       </map>

@@ -24,7 +24,7 @@
                 android:layout_marginTop="68dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:hint="Name"
+                android:hint="@string/new_name_hint"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,15 +38,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editDiceName"
-                tools:itemCount="3"
-                tools:listitem="@layout/recycler_view_item" />
+                tools:itemCount="3" />
 
             <Button
                 android:id="@+id/addOptionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
-                android:text="Add option"
+                android:text="@string/new_option_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editDiceSideRecView" />
@@ -56,7 +55,7 @@
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="100dp"
-                android:text="Save"
+                android:text="@string/new_save_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/addOptionButton" />

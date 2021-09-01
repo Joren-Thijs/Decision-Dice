@@ -2,6 +2,7 @@ package com.shadowcorp.firstapp.models;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity
@@ -19,5 +20,16 @@ public class Dice {
     public Dice(String name, String category) {
         this.name = name;
         this.category = category;
+    }
+
+    @Ignore
+    public boolean showMenu;
+
+    public boolean isShowMenu() {
+        return showMenu;
+    }
+
+    public void setShowMenu(boolean showMenu) {
+        this.showMenu = showMenu;
     }
 }

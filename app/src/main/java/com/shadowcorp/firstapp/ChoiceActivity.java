@@ -2,11 +2,14 @@ package com.shadowcorp.firstapp;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -65,6 +68,13 @@ public class ChoiceActivity extends AppCompatActivity {
 
         adapter.setDices(dices);
 
+        diceRecView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                adapter.closeMenu();
+            }
+        });
+
         diceRecView.setAdapter(adapter);
         diceRecView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -76,8 +86,20 @@ public class ChoiceActivity extends AppCompatActivity {
     }
 
     // For back button navigation
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (adapter.isMenuShown()) {
+            adapter.closeMenu();
+        }
         finish();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (adapter.isMenuShown()) {
+            adapter.closeMenu();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

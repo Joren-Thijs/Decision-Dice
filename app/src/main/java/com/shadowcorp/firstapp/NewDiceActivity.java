@@ -22,6 +22,7 @@ import com.shadowcorp.firstapp.models.Dice;
 import com.shadowcorp.firstapp.models.DiceSide;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class NewDiceActivity extends AppCompatActivity {
 
@@ -29,7 +30,7 @@ public class NewDiceActivity extends AppCompatActivity {
     private EditText editDiceName;
     private RecyclerView editDiceSideRecView;
     private EditDiceSideRecViewAdapter adapter;
-    ArrayList<DiceSide> diceSides = new ArrayList<>();;
+    private ArrayList<DiceSide> diceSides = new ArrayList<>();
     private Button addOptionButton;
     private Button saveDiceButton;
     private DiceDao diceDao;
@@ -158,12 +159,20 @@ public class NewDiceActivity extends AppCompatActivity {
             return false;
         }
 
-        // Check dice sides or not null or empty
-        for (DiceSide diceSide : diceSides) {
+        boolean removedEmpty = false;
+        // Check dice sides are not null or empty
+        for (Iterator<DiceSide> iterator = diceSides.iterator(); iterator.hasNext();) {
+            DiceSide diceSide = iterator.next();
             if(Strings.isNullOrEmpty(diceSide.name)) {
-                Toast.makeText(this, "All dice sides must have a name", Toast.LENGTH_SHORT).show();
-                return false;
+                // Remove the current element from the iterator and the list.
+                iterator.remove();
+                removedEmpty = true;
             }
+        }
+
+        // If empty dice Sides got removed refresh the list
+        if (removedEmpty) {
+            adapter.setDiceSides(diceSides);
         }
 
         return true;

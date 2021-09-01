@@ -5,6 +5,7 @@ import static androidx.room.ForeignKey.CASCADE;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = @ForeignKey(entity = Dice.class,
@@ -26,4 +27,7 @@ public class DiceSide {
         this.name = name;
         this.diceId = diceId;
     }
+
+    @Ignore
+    public boolean showMenu;
 }
