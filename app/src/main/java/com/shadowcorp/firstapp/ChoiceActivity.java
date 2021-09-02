@@ -2,28 +2,21 @@ package com.shadowcorp.firstapp;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.shadowcorp.firstapp.Adapters.DiceRecViewAdapter;
-import com.shadowcorp.firstapp.Adapters.EditDiceSideRecViewAdapter;
 import com.shadowcorp.firstapp.DataAccess.AppDatabase;
 import com.shadowcorp.firstapp.DataAccess.DiceDao;
 import com.shadowcorp.firstapp.models.Dice;
-import com.shadowcorp.firstapp.models.DiceSide;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ChoiceActivity extends AppCompatActivity {
 
@@ -70,11 +63,9 @@ public class ChoiceActivity extends AppCompatActivity {
     private void setupDiceRecycleView() {
         diceRecView = findViewById(R.id.diceRecView);
 
-        dices = new ArrayList<>(diceDao.getAllFromCategory(category));
-
         adapter = new DiceRecViewAdapter();
 
-        adapter.setDices(dices);
+        loadDices();
 
         diceRecView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
             @Override
@@ -85,6 +76,12 @@ public class ChoiceActivity extends AppCompatActivity {
 
         diceRecView.setAdapter(adapter);
         diceRecView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void loadDices() {
+        dices = new ArrayList<>(diceDao.getAllFromCategory(category));
+
+        adapter.setDices(dices);
     }
 
     private void loadNewDiceActivity() {

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Decision Dice</string>
+    <string name="welcome_message">Welkom bij Decision Dice</string>
+    <string name="nav_button_one">Laten we rollen</string>
+    <string name="category_title_text">Gelieve een categorie te kiezen</string>
+    <string name="food_category_name">Eten</string>
+    <string name="tv_category_name">TV</string>
+    <string name="game_category_name">Videospel</string>
+    <string name="date_category_name">Date</string>
+    <string name="boardgame_category_name">Bordspel</string>
+    <string name="sex_category_name">Sex</string>
+    <string name="choice_title">Waaruit kiezen?</string>
+    <string name="choice_subtitle">Of een vorige</string>
+    <string name="choice_add_new_button">Maak een nieuwe dobbelsteen</string>
+    <string name="new_name_hint">Naam</string>
+    <string name="new_option_button">Voeg optie toe</string>
+    <string name="new_save_button">Opslaan</string>
+    <string name="new_option_hint">Optie</string>
+    <string name="dice_rolled">Jij rolde</string>
+    <string name="dice_roll_button">Rol dobelsteen</string>
+</resources>

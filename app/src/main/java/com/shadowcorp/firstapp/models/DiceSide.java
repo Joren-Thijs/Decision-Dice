@@ -27,7 +27,4 @@ public class DiceSide {
         this.name = name;
         this.diceId = diceId;
     }
-
-    @Ignore
-    public boolean showMenu;
 }

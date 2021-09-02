@@ -17,7 +17,7 @@
     <!--    Choice activity-->
     <string name="choice_title">What to choose from?</string>
     <string name="choice_subtitle">Or a previous one?</string>
-    <string name="choice_add_new_button">Make a new list</string>
+    <string name="choice_add_new_button">Make a new dice</string>
 
     <!--    New Dice activity-->
     <string name="new_name_hint">Name</string>
@@ -27,5 +27,6 @@
 
     <!--    Dice activity-->
     <string name="dice_rolled">You rolled</string>
+    <string name="dice_roll_button">Roll Dice</string>
 
 </resources>
